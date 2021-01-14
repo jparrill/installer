@@ -10,8 +10,6 @@
     <host ip='192.168.126.10'>
       <hostname>api.test-cluster.e2e.bos.redhat.com</hostname>
       <hostname>api-int.test-cluster.e2e.bos.redhat.com</hostname>
-      <hostname>console-openshift-console.apps.test-cluster.e2e.bos.redhat.com</hostname>
-      <hostname>oauth-openshift.apps.test-cluster.e2e.bos.redhat.com</hostname>
     </host>
   </dns>
   <ip family='ipv4' address='192.168.126.1' prefix='24'>
