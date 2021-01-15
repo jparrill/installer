@@ -7,22 +7,8 @@
 RHCOS_ISO="/tmp/images/installer-SNO-image.iso"
 VM_NAME="sno-test"
 OS_VARIANT="rhel8.1"
-RAM_MB="16384"
-DISK_GB="30"
-CPU_CORE="6"
+RAM_MB="20000"
+DISK_GB="50"
+CPU_CORE="8"
 
-nohup virt-install \
-    --connect qemu:///system \
-    -n "${VM_NAME}" \
-    -r "${RAM_MB}" \
-    --vcpus "${CPU_CORE}" \
-    --os-variant="${OS_VARIANT}" \
-    --import \
-    --network=network:test-net,mac=52:54:00:ee:42:e1 \
-    --graphics=none \
-    --events on_reboot=restart \
-    --cdrom "${RHCOS_ISO}" \
-    --disk pool=default,size="${DISK_GB}" \
-    --boot hd,cdrom \
-    --noautoconsole \
-    --wait=-1 &
+kcli create vm -P nets=['{"name":"test-net","mac":"52:54:00:ee:42:e1"}'] -P iso=${RHCOS_ISO} -P memory=${RAM_MB} -P numcpus=${CPU_CORE} -P disks=[${DISK_GB},10,10,10,10,10] ${VM_NAME}
