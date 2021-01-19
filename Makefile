@@ -1,6 +1,8 @@
 clean: destroy
 	rm -rf mydir
 
+all: clean generate embed network start-iso
+
 destroy:
 	./hack/virt-delete-sno.sh || true
 
